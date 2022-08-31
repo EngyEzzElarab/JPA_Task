@@ -10,8 +10,7 @@ public interface Service {
         System.out.println("Record Successfully deleted from table " + someCLass.getSimpleName());
     }
 
-    public static <T> void insert(EntityManager entityManager, T someEntity)
-    {
+    public static <T> void insert(EntityManager entityManager, T someEntity) {
         entityManager.getTransaction().begin();
         entityManager.persist(someEntity);
         entityManager.getTransaction().commit();

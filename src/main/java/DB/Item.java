@@ -1,7 +1,7 @@
 package DB;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -12,6 +12,22 @@ public class Item {
     private Double Width;
     private Double Height;
     private int KitID;
+    @ManyToMany
+    @JoinTable(name = "ItemStoreRelation",
+            joinColumns = @JoinColumn(name = "ItemID"),
+            inverseJoinColumns = @JoinColumn(name = "StoreID"))
+
+    private List<Stores> Stores;
+
+
+    public List<DB.Stores> getStores() {
+        return Stores;
+    }
+
+    public void setStores(List<DB.Stores> stores) {
+        Stores = stores;
+    }
+
 
     public int getItemID() {
         return ItemID;
